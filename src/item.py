@@ -13,10 +13,14 @@ class Item:
         :param price: Цена за единицу товара.
         :param quantity: Количество товара в магазине.
         """
-        self.name = name
-        self.price = price
-        self.quantity = quantity
-        Item.all.__add__(self)
+        # Проверка типов данных параметров
+        if not (isinstance(name, str) and (isinstance(price, float) or isinstance(price, int)) and isinstance(quantity, int)):
+            raise TypeError
+        else:
+            self.name = name
+            self.price = price
+            self.quantity = quantity
+            Item.all.append(self)
 
     def calculate_total_price(self) -> float:
         """
@@ -31,3 +35,6 @@ class Item:
         Применяет установленную скидку для конкретного товара.
         """
         pass
+
+
+# item1 = Item("Смартфон", "10000", 20)
