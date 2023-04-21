@@ -28,7 +28,7 @@ class Item:
 
         :return: Общая стоимость товара.
         """
-        pass
+        return self.price * self.quantity
 
     def apply_discount(self) -> None:
         """
@@ -37,4 +37,5 @@ class Item:
         pass
 
 
-# item1 = Item("Смартфон", "10000", 20)
+# item1 = Item("Смартфон", 10000, 20)
+# print(item1.calculate_total_price())
