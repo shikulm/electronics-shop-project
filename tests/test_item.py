@@ -37,3 +37,11 @@ def test_init_TypeErrorquantity():
         Item("Смартфон", 10000, 20.4)
     assert len(Item.all) == ln
 
+@pytest.mark.parametrize("name, price, quantity, total_price",
+                         [
+                             ("Смартфон", 10000, 20, 200000),
+                             ("Ноутбук", 20000, 5, 100000)
+                         ])
+def test_calculate_total_price(name, price, quantity, total_price):
+    item1 = Item(name, price, quantity)
+    assert item1.calculate_total_price() == total_price
