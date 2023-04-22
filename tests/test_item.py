@@ -55,4 +55,12 @@ def test_apply_discount():
     assert item1.price == 8000.0
     assert item2.price == 20000
 
+def test_getter_name():
+    item = Item('Телефон', 10000, 5)
+    assert item.name == 'Телефон'
+
+    # длина наименования товара меньше 10 символов
+    # item.name = 'Смартфон'
+    # assert item.name == 'Смартфон'
+
 

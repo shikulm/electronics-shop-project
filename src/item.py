@@ -17,10 +17,11 @@ class Item:
         if not (isinstance(name, str) and (isinstance(price, float) or isinstance(price, int)) and isinstance(quantity, int)):
             raise TypeError
         else:
-            self.name = name
+            self.__name = name
             self.price = price
             self.quantity = quantity
             Item.all.append(self)
+
 
     def calculate_total_price(self) -> float:
         """
@@ -35,6 +36,11 @@ class Item:
         Применяет установленную скидку для конкретного товара.
         """
         self.price *= Item.pay_rate
+
+
+    @property
+    def name(self):
+        return self.__name
 
 
 # item1 = Item("Смартфон", 10000, 20)
