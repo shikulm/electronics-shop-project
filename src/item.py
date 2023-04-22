@@ -1,3 +1,5 @@
+import csv
+
 class Item:
     """
     Класс для представления товара в магазине.
@@ -49,5 +51,21 @@ class Item:
         else:
             raise Exception("Длина наименования товара превышает 10 символов")
 
+
+    @classmethod
+    def instantiate_from_csv(cls, csv_name: str = "items.csv"):
+        """класс-метод, инициализирующий экземпляры класса Item данными из файла csv_name"""
+
+        with open(csv_name, "r", encoding="ansi") as fl:
+            input_items = csv.DictReader(fl)
+            itm = []
+            for item in input_items:
+                # print(item)
+                itm.append(cls(name=item['name'], price=float(item['price']), quantity=int(item['quantity'])))
+
+        return itm
+
+
 # item1 = Item("Смартфон", 10000, 20)
+# print(Item.instantiate_from_csv())
 # print(item1.calculate_total_price())
