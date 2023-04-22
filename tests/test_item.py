@@ -1,6 +1,7 @@
 """Здесь надо написать тесты с использованием pytest для модуля item."""
 import pytest
 from src.item import *
+import os
 
 
 @pytest.mark.parametrize("name, price, quantity, result",
@@ -68,6 +69,22 @@ def test_setter_name():
 
     with pytest.raises(Exception):
         item.name = 'СуперСмартфон'
+
+
+def test_instantiate_from_csv():
+    # Item.instantiate_from_csv(os.path.join("src", "items.csv"))  # создание объектов из данных файла
+    itms = Item.instantiate_from_csv()  # создание объектов из данных файла
+    assert len(itms) == 5  # в файле 5 записей с данными по товарам
+    assert len(Item.all) == 5  # в файле 5 записей с данными по товарам
+
+    item1 = itms[0]
+    assert item1.name == 'Смартфон'
+
+
+
+# def test_instantiate_from_csv_FileNotFoundError():
+#     with pytest.raises(FileNotFoundError):
+#         Item.instantiate_from_csv("dfs")
 
 
 

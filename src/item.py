@@ -1,4 +1,5 @@
 import csv
+import os
 
 class Item:
     """
@@ -56,7 +57,11 @@ class Item:
     def instantiate_from_csv(cls, csv_name: str = "items.csv"):
         """класс-метод, инициализирующий экземпляры класса Item данными из файла csv_name"""
 
-        with open(csv_name, "r", encoding="ansi") as fl:
+        path_file = os.path.dirname(os.path.abspath(__file__))
+        full_file_name = os.path.join(path_file, csv_name)
+
+        Item.all = []
+        with open(full_file_name, "r", encoding="ansi") as fl:
             input_items = csv.DictReader(fl)
             itm = []
             for item in input_items:
@@ -66,6 +71,9 @@ class Item:
         return itm
 
 
-# item1 = Item("Смартфон", 10000, 20)
-# print(Item.instantiate_from_csv())
-# print(item1.calculate_total_price())
+
+
+
+item1 = Item("Смартфон", 10000, 20)
+print(Item.instantiate_from_csv())
+print(item1.calculate_total_price())
