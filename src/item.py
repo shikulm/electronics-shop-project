@@ -71,6 +71,18 @@ class Item:
         return itm
 
 
+    @staticmethod
+    def string_to_number(str_digit: str) -> None:
+        """Преобразовывает строку в число"""
+        if type(str_digit) == "float":
+            return float(str_digit)
+        elif type(str_digit) == "int":
+            return int(str_digit)
+        else:
+            raise TypeError
+
+
+
 
 
 
