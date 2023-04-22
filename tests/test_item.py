@@ -87,9 +87,13 @@ def test_string_to_number():
     assert Item.string_to_number('5.5') == 5
 
 
-# def test_instantiate_from_csv_FileNotFoundError():
-#     with pytest.raises(FileNotFoundError):
-#         Item.instantiate_from_csv("dfs")
+def test_string_to_number_TypeError():
+    with pytest.raises(TypeError):
+        Item.string_to_number('dd') == 5
+        Item.string_to_number(23) == 5
+
+
+
 
 
 
