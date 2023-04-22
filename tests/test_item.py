@@ -59,8 +59,16 @@ def test_getter_name():
     item = Item('Телефон', 10000, 5)
     assert item.name == 'Телефон'
 
+def test_setter_name():
+    item = Item('Телефон', 10000, 5)
+
     # длина наименования товара меньше 10 символов
-    # item.name = 'Смартфон'
-    # assert item.name == 'Смартфон'
+    item.name = 'Смартфон'
+    assert item.name == 'Смартфон'
+
+    with pytest.raises(Exception):
+        item.name = 'СуперСмартфон'
+
+
 
 

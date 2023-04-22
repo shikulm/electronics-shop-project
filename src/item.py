@@ -42,6 +42,12 @@ class Item:
     def name(self):
         return self.__name
 
+    @name.setter
+    def name(self, name):
+        if len(name) <= 10:
+            self.__name = name
+        else:
+            raise Exception("Длина наименования товара превышает 10 символов")
 
 # item1 = Item("Смартфон", 10000, 20)
 # print(item1.calculate_total_price())
