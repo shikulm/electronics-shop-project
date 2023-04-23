@@ -78,14 +78,3 @@ class Item:
             return int(float(str_digit))
         except:
             raise TypeError
-
-
-
-
-# print(int(float('5')))
-#
-#
-#
-# item1 = Item("Смартфон", 10000, 20)
-# print(Item.instantiate_from_csv())
-# print(item1.calculate_total_price())
