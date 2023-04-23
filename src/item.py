@@ -50,7 +50,7 @@ class Item:
         if len(name) <= 10:
             self.__name = name
         else:
-            raise Exception("Длина наименования товара превышает 10 символов")
+            raise ValueError("Длина наименования товара превышает 10 символов")
 
 
     @classmethod

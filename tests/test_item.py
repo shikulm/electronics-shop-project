@@ -67,7 +67,7 @@ def test_setter_name():
     item.name = 'Смартфон'
     assert item.name == 'Смартфон'
 
-    with pytest.raises(Exception):
+    with pytest.raises(ValueError):
         item.name = 'СуперСмартфон'
 
 
