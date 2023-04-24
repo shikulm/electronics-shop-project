@@ -1,6 +1,7 @@
 """Здесь надо написать тесты с использованием pytest для модуля item."""
 import pytest
 from src.item import *
+import os
 
 
 @pytest.mark.parametrize("name, price, quantity, result",
@@ -54,5 +55,46 @@ def test_apply_discount():
     item1.apply_discount()
     assert item1.price == 8000.0
     assert item2.price == 20000
+
+def test_getter_name():
+    item = Item('Телефон', 10000, 5)
+    assert item.name == 'Телефон'
+
+def test_setter_name():
+    item = Item('Телефон', 10000, 5)
+
+    # длина наименования товара меньше 10 символов
+    item.name = 'Смартфон'
+    assert item.name == 'Смартфон'
+
+    with pytest.raises(ValueError):
+        item.name = 'СуперСмартфон'
+
+
+def test_instantiate_from_csv():
+    # Item.instantiate_from_csv(os.path.join("src", "items.csv"))  # создание объектов из данных файла
+    itms = Item.instantiate_from_csv()  # создание объектов из данных файла
+    assert len(itms) == 5  # в файле 5 записей с данными по товарам
+    assert len(Item.all) == 5  # в файле 5 записей с данными по товарам
+
+    item1 = itms[0]
+    assert item1.name == 'Смартфон'
+
+
+def test_string_to_number():
+    assert Item.string_to_number('5') == 5
+    assert Item.string_to_number('5.0') == 5
+    assert Item.string_to_number('5.5') == 5
+
+
+def test_string_to_number_TypeError():
+    with pytest.raises(TypeError):
+        Item.string_to_number('dd') == 5
+        Item.string_to_number(23) == 5
+
+
+
+
+
 
 

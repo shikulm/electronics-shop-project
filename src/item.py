@@ -1,3 +1,6 @@
+import csv
+import os
+
 class Item:
     """
     Класс для представления товара в магазине.
@@ -17,10 +20,11 @@ class Item:
         if not (isinstance(name, str) and (isinstance(price, float) or isinstance(price, int)) and isinstance(quantity, int)):
             raise TypeError
         else:
-            self.name = name
+            self.__name = name
             self.price = price
             self.quantity = quantity
             Item.all.append(self)
+
 
     def calculate_total_price(self) -> float:
         """
@@ -37,5 +41,40 @@ class Item:
         self.price *= Item.pay_rate
 
 
-# item1 = Item("Смартфон", 10000, 20)
-# print(item1.calculate_total_price())
+    @property
+    def name(self):
+        return self.__name
+
+    @name.setter
+    def name(self, name):
+        if len(name) <= 10:
+            self.__name = name
+        else:
+            raise ValueError("Длина наименования товара превышает 10 символов")
+
+
+    @classmethod
+    def instantiate_from_csv(cls, csv_name: str = "items.csv"):
+        """класс-метод, инициализирующий экземпляры класса Item данными из файла csv_name"""
+
+        path_file = os.path.dirname(os.path.abspath(__file__))
+        full_file_name = os.path.join(path_file, csv_name)
+
+        Item.all = []
+        with open(full_file_name, "r", encoding="ansi") as fl:
+            input_items = csv.DictReader(fl)
+            itm = []
+            for item in input_items:
+                # print(item)
+                itm.append(cls(name=item['name'], price=float(item['price']), quantity=int(item['quantity'])))
+
+        return itm
+
+
+    @staticmethod
+    def string_to_number(str_digit: str) -> None:
+        """Преобразовывает строку в число"""
+        try:
+            return int(float(str_digit))
+        except:
+            raise TypeError
