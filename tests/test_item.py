@@ -9,10 +9,17 @@ import os
                              ("Смартфон", 10000, 20, ["Смартфон", 10000, 20]),
                              ("Ноутбук", 20000, 5, ["Ноутбук", 20000, 5])
                          ])
-def test_init(name, price, quantity, result):
+def test__init__(name, price, quantity, result):
     item1 = Item(name, price, quantity)
     assert [item1.name, item1.price, item1.quantity] == result
 
+@pytest.mark.parametrize("item, result",
+                         [
+                             (Item("Смартфон", 10000, 20), Item('Смартфон', 10000, 20)),
+                             (Item("Ноутбук", 20000, 5), Item("Ноутбук", 20000, 5))
+                         ])
+def test__repr__(item, result):
+    assert repr(item) == result
 
 def test_init_all():
     ln = len(Item.all)
