@@ -21,6 +21,14 @@ def test__init__(name, price, quantity, result):
 def test__repr__(item, result):
     assert repr(item) == result
 
+@pytest.mark.parametrize("item, result",
+                         [
+                             (Item("Смартфон", 10000, 20), "Смартфон"),
+                             (Item("Ноутбук", 20000, 5), "Ноутбук")
+                         ])
+def test__str__(item, result):
+    assert str(item) == result
+
 def test_init_all():
     ln = len(Item.all)
     item1 = Item("Смартфон", 10000, 20)
