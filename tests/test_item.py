@@ -19,7 +19,7 @@ def test__init__(name, price, quantity, result):
                              (Item("Ноутбук", 20000, 5), "Item('Ноутбук', 20000, 5)")
                          ])
 def test__repr__(item, result):
-    assert repr(item) == result
+    assert item.__repr__() == result
 
 @pytest.mark.parametrize("item, result",
                          [
