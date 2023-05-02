@@ -37,6 +37,10 @@ def test__add__(phone1, item1):
     assert item1 + phone1 == 25
     assert phone1 + phone1 == 10
 
+def test__add__ValueError(phone1):
+    with pytest.raises(ValueError):
+        res = phone1 + 25
+
 
 
 
