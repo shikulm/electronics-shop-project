@@ -1,9 +1,9 @@
-from item import Item
+from src.item import Item
 
 class Phone(Item):
 
     def __init__(self, name: str, price: float, quantity: int, number_of_sim: int) -> None:
-        self.super.__init__(name, price, quantity)
+        super().__init__(name, price, quantity)
         self.__number_of_sim = number_of_sim
 
 
