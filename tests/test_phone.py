@@ -28,8 +28,14 @@ def test_number_of_sim_setter(phone1):
 def test__str__(phone1):
     assert str(phone1) == 'iPhone 14'
 
+
 def test__repr__(phone1):
     assert repr(phone1) == "Phone('iPhone 14', 120000, 5, 2)"
+
+
+def test__add__(phone1, item1):
+    assert item1 + phone1 == 25
+    assert phone1 + phone1 == 10
 
 
 
