@@ -18,3 +18,11 @@ def test__init__(phone1):
     assert phone1.quantity == 5
     assert phone1.number_of_sim == 2
 
+
+def test_number_of_sim_setter(phone1):
+    with pytest.raises(ValueError):
+        phone1.number_of_sim = 0
+        phone2 = Phone("iPhone 14", 120000, 5, 2)
+
+
+
