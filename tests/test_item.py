@@ -47,6 +47,11 @@ def test_init_TypeErrorprice():
     assert len(Item.all) == ln
 
 
+def test__add__valuerror():
+    with pytest.raises(ValueError):
+        res = Item("Смартфон", 10000, 20) + 25
+
+
 def test_init_TypeErrorquantity():
     ln = len(Item.all)
     with pytest.raises(TypeError):

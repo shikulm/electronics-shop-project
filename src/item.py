@@ -25,14 +25,17 @@ class Item:
             self.quantity = quantity
             Item.all.append(self)
 
-
     def __repr__(self):
         return f"{self.__class__.__name__}('{self.name}', {self.price}, {self.quantity})"
-
 
     def __str__(self):
         return self.name
 
+    def __add__(self, other):
+        if issubclass(other.__class__, self.__class__):
+            return self.quantity + other.quantity
+        else:
+            raise ValueError("Складывать можно только с экземпляром класса Item или его наследником!")
 
     def calculate_total_price(self) -> float:
         """
