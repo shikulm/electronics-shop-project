@@ -1,4 +1,4 @@
-from item import Item
+from src.item import Item
 
 class MixinKeyBoard:
     """ Дополнительный функционал по хранению и изменению раскладки клавиатуры """
@@ -10,11 +10,12 @@ class MixinKeyBoard:
 
     def change_lang(self):
         self.__language = "RU" if self.__language == "EN" else "EN"
+        return self
 
     @property
     def language(self):
-        return self.language
+        return self.__language
 
 
-class KeyBoard(Item, MixinKeyBoard):
+class Keyboard(Item, MixinKeyBoard):
     pass
