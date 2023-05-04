@@ -14,3 +14,7 @@ class MixinKeyBoard:
     @property
     def language(self):
         return self.language
+
+
+class KeyBoard(Item, MixinKeyBoard):
+    pass
