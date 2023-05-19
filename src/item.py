@@ -97,7 +97,7 @@ class Item:
             return itm
         except FileNotFoundError:
             raise FileNotFoundError(f"Отсутствует файл {csv_name}")
-        except InstantiateCSVError:
+        except KeyError or TypeError:
             raise InstantiateCSVError(f"Файл {csv_name} поврежден")
 
     @staticmethod
