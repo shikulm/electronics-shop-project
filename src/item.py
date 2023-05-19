@@ -97,6 +97,8 @@ class Item:
             return itm
         except FileNotFoundError:
             raise FileNotFoundError(f"Отсутствует файл {csv_name}")
+        except InstantiateCSVError:
+            raise InstantiateCSVError(f"Файл {csv_name} поврежден")
 
     @staticmethod
     def string_to_number(str_digit: str) -> None:

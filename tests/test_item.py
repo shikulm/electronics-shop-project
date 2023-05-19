@@ -116,7 +116,7 @@ def test_string_to_number_TypeError():
 def test_instantiate_from_csv_FileNotFoundError():
     with pytest.raises(FileNotFoundError) as err:
         Item.instantiate_from_csv("_item.csv")
-        assert err.message == "Отсутствует файл _item.csv"
+        assert err.message == "Файл item_with_error.csv поврежден"
 
 
 
