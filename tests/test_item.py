@@ -113,6 +113,11 @@ def test_string_to_number_TypeError():
         Item.string_to_number(23) == 5
 
 
+def test_instantiate_from_csv_FileNotFoundError():
+    with pytest.raises(FileNotFoundError) as err:
+        Item.instantiate_from_csv("item.csv")
+        assert err.message == "Отсутствует файл item.csv"
+
 
 
 

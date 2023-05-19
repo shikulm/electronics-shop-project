@@ -83,7 +83,7 @@ class Item:
                     itm.append(cls(name=item['name'], price=float(item['price']), quantity=int(item['quantity'])))
 
             return itm
-        except FileNotFoundError():
+        except FileNotFoundError:
             raise FileNotFoundError(f"Отсутствует файл {csv_name}")
 
     @staticmethod
@@ -93,3 +93,4 @@ class Item:
             return int(float(str_digit))
         except:
             raise TypeError
+
