@@ -107,16 +107,25 @@ def test_string_to_number():
     assert Item.string_to_number('5.5') == 5
 
 
+def test_instantiate_from_csv_FileNotFoundError():
+    with pytest.raises(FileNotFoundError) as err:
+        Item.instantiate_from_csv("_item.csv")
+        assert err.message == "Файл item_with_error.csv поврежден"
+
+
+def test_instantiate_from_csv_InstantiateCSVError():
+    with pytest.raises(FileNotFoundError) as err:
+        Item.instantiate_from_csv("item_with_error.csv")
+        assert err.message == "InstantiateCSVError: Файл item_with_error.csv поврежден"
+
+
 def test_string_to_number_TypeError():
     with pytest.raises(TypeError):
         Item.string_to_number('dd') == 5
         Item.string_to_number(23) == 5
 
 
-def test_instantiate_from_csv_FileNotFoundError():
-    with pytest.raises(FileNotFoundError) as err:
-        Item.instantiate_from_csv("_item.csv")
-        assert err.message == "Файл item_with_error.csv поврежден"
+
 
 
 
