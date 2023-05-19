@@ -74,15 +74,17 @@ class Item:
         full_file_name = os.path.join(path_file, csv_name)
 
         Item.all = []
-        with open(full_file_name, "r", encoding="ansi") as fl:
-            input_items = csv.DictReader(fl)
-            itm = []
-            for item in input_items:
-                # print(item)
-                itm.append(cls(name=item['name'], price=float(item['price']), quantity=int(item['quantity'])))
+        try:
+            with open(full_file_name, "r", encoding="ansi") as fl:
+                input_items = csv.DictReader(fl)
+                itm = []
+                for item in input_items:
+                    # print(item)
+                    itm.append(cls(name=item['name'], price=float(item['price']), quantity=int(item['quantity'])))
 
-        return itm
-
+            return itm
+        except FileNotFoundError():
+            raise FileNotFoundError(f"Отсутствует файл {csv_name}")
 
     @staticmethod
     def string_to_number(str_digit: str) -> None:
