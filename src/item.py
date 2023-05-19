@@ -1,6 +1,18 @@
 import csv
 import os
 
+class InstantiateCSVError(Exception):
+    """
+    Исключение для проверки корректной структуры входного файла csv
+    """
+    def __init__(self, *args, **kwargs):
+        self.message = args[0] if args else "Файл csv поврежден"
+
+    def __str__(self):
+        return self.message
+
+
+
 class Item:
     """
     Класс для представления товара в магазине.
